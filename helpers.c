@@ -37,13 +37,18 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             int sepiaGreen = round(0.349 * image[i][j].rgbtRed + 0.686 * image[i][j].rgbtGreen + 0.168 * image[i][j].rgbtBlue);
             int sepiaBlue = round(0.272 * image[i][j].rgbtRed + 0.534 * image[i][j].rgbtGreen + 0.131 * image[i][j].rgbtBlue);
 
-            // Set cap to 255
-            if (sepiaRed > 255 || sepiaGreen > 255 || sepiaBlue > 255)
-            {
-                sepiaRed = 255;
-                sepiaGreen = 255;
-                sepiaBlue = 255;
-            }
+            // Set cap to 255 with if statement
+            // if (sepiaRed > 255 || sepiaGreen > 255 || sepiaBlue > 255)
+            // {
+            //     sepiaRed = 255;
+            //     sepiaGreen = 255;
+            //     sepiaBlue = 255;
+            // }
+
+            // Capping values individually with conditional operator
+            sepiaRed = sepiaRed < 255 ? sepiaRed : 255;
+            sepiaGreen = sepiaGreen < 255 ? sepiaGreen : 255;
+            sepiaBlue = sepiaBlue < 255 ? sepiaBlue : 255;
 
             // Set each color to sepia value
             image[i][j].rgbtRed = sepiaRed;
